@@ -1,11 +1,10 @@
 <?php
 //POSTデータ取得
 $name = $_POST['name'];
-$id = $_POST['id'];
-$pass = $_POST['pass'];
-$rank = $_POST['rank'];
-$status = $_POST['status'];
-
+$lid = $_POST['id'];
+$lpw = $_POST['pass'];
+$kanri = $_POST['rank'];
+$life = $_POST['status'];
 
 //DB接続
 try {
@@ -15,12 +14,12 @@ try {
 }
 
 //データ登録SQL
-$stmt = $pdo->prepare("INSERT INTO gs_bm_table(id, name, lid, lpw, kanri, life)VALUES(NULL, :name, :id, :pw, :rank, :status)");
+$stmt = $pdo->prepare("INSERT INTO gs_user_table(id, name, lid, lpw, kanri, life)VALUES(NULL, :name, :lid, :lpw, :kanri, :life)");
 $stmt->bindValue(':name', $name,  PDO::PARAM_STR);
-$stmt->bindValue(':lid', $id, PDO::PARAM_STR);
-$stmt->bindValue(':lpw', $pw, PDO::PARAM_STR);
-$stmt->bindValue(':kanri', $rank, PDO::PARAM_STR);
-$stmt->bindValue(':life', $status, PDO::PARAM_STR);
+$stmt->bindValue(':lid', $lid, PDO::PARAM_STR);
+$stmt->bindValue(':lpw', $lpw, PDO::PARAM_STR);
+$stmt->bindValue(':kanri', $kanri, PDO::PARAM_INT);
+$stmt->bindValue(':life', $life, PDO::PARAM_INT);
 $status = $stmt->execute();
 
 //データ登録処理後
