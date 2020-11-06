@@ -1,14 +1,5 @@
 <?php
 
-session_start();
-
-if (!isset($_SESSION["chk_ssid"]) || $_SESSION["chk_ssid"] != session_id()) {
-    exit("LOGIN ERROR");
-} else {
-    session_regenerate_id(true);
-    $_SESSION["chk_ssid"] = session_id();
-}
-
 try {
     $pdo = new PDO('mysql:dbname=gs_yoshiyoshi;charset=utf8;host=localhost','root','root');
 } catch (PDOException $e) {

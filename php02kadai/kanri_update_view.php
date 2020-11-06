@@ -8,7 +8,7 @@ $id = $_GET['id'];
 
 //DB接続
 try {
-    $db_name = "ga_table";
+    $db_name = "ga_db";
     $db_id = "root";
     $db_pw = "root";
     $db_host = "localhost";
